@@ -1,0 +1,13 @@
+[project]
+name = "support-triage-agent"
+version = "0.1.0"
+description = "Terminal-based multi-domain support triage agent for HackerRank, Claude, and Visa India tickets."
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+support-triage = "support_triage.cli:main"
+support-triage-ui = "support_triage.webapp:main"
+
+[tool.unittest]
+start-directory = "tests"

@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+out/test_tmp/
+out/tmp*/
+out/submission_stage/
+out/zip_smoke/
+out/*.log
+out/*probe*.txt
+out/problem_header_case.csv
+out/code_submission.zip

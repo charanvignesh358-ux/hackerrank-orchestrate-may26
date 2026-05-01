@@ -1,0 +1,292 @@
+[
+  {
+    "id": "hr-assessment-access",
+    "domain": "HackerRank",
+    "product_area": "assessment_access",
+    "title": "Candidate assessment access",
+    "url": "https://support.example.local/hackerrank/assessment-access",
+    "keywords": ["assessment", "test link", "candidate", "expired", "invite", "access"],
+    "content": "Candidates should use the exact assessment link sent to the email address invited by the hiring team. If the link is expired, the candidate should ask the recruiter or hiring team to resend or update the invitation. Support should not change assessment deadlines or grant access without the hiring team's authorization.",
+    "response": "Use the exact assessment link sent to your invited email address. If the link is expired or you were invited with a different email, ask the recruiter or hiring team to resend or update the invitation; support cannot change assessment deadlines or grant access without that authorization."
+  },
+  {
+    "id": "hr-live-assessment-blocked",
+    "domain": "HackerRank",
+    "product_area": "assessment_access",
+    "title": "Candidate blocked during a live assessment",
+    "url": "https://support.example.local/hackerrank/live-assessment-blocked",
+    "keywords": ["live test", "mid assessment", "candidate blocked", "assessment in progress"],
+    "content": "A candidate blocked during a live assessment is a high-urgency support case. The ticket must be escalated for human review because timing, access, and fairness decisions may affect the assessment outcome.",
+    "response": "A candidate blocked during a live assessment must be reviewed by support because timing, access, and fairness decisions may affect the assessment outcome."
+  },
+  {
+    "id": "hr-remove-user",
+    "domain": "HackerRank",
+    "product_area": "account_management",
+    "title": "Remove an employee or interviewer",
+    "url": "https://support.example.local/hackerrank/remove-user",
+    "keywords": ["remove employee", "remove interviewer", "delete user", "team management", "admin"],
+    "content": "A workspace admin can remove an employee or interviewer from the platform from Team Management. Removing a user prevents future access but does not rewrite historical reports or past interview records.",
+    "response": "A workspace admin can remove an employee or interviewer from Team Management. Removing the user prevents future access, but it does not rewrite historical reports or past interview records."
+  },
+  {
+    "id": "hr-certificate-name",
+    "domain": "HackerRank",
+    "product_area": "candidate_experience",
+    "title": "Certificate name correction",
+    "url": "https://support.example.local/hackerrank/certificate-name",
+    "keywords": ["certificate", "name correction", "profile name", "candidate"],
+    "content": "For a certificate name correction, the candidate should first update the name on their profile and then request certificate regeneration if the option is available in the certificate page. If regeneration is not available, the ticket should include the certificate link and the corrected name.",
+    "response": "First update the name on your profile. Then use certificate regeneration if it is available on the certificate page; if it is not available, include the certificate link and the corrected name in the ticket."
+  },
+  {
+    "id": "hr-score-disputes",
+    "domain": "HackerRank",
+    "product_area": "candidate_experience",
+    "title": "Score disputes and assessment result overrides",
+    "url": "https://support.example.local/hackerrank/score-disputes",
+    "keywords": ["score dispute", "unfair grading", "answer review", "override result", "plagiarism"],
+    "content": "Score disputes, answer reviews, plagiarism review outcomes, and assessment result overrides require review by the hiring team or authorized support staff. Automated support should not alter scores or assessment outcomes.",
+    "response": "Score disputes, answer reviews, plagiarism outcomes, and result overrides require review by the hiring team or authorized support staff. Automated support should not alter assessment outcomes."
+  },
+  {
+    "id": "hr-feature-feedback",
+    "domain": "HackerRank",
+    "product_area": "recruiter_tools",
+    "title": "Product feature feedback",
+    "url": "https://support.example.local/hackerrank/feature-feedback",
+    "keywords": ["feature request", "suggestion", "please add", "dark mode", "feedback"],
+    "content": "Support can acknowledge HackerRank product feedback and feature requests. The acknowledgement must not promise implementation dates, roadmap placement, or availability.",
+    "response": "Thanks for sharing this product feedback. We can record the feature request, but we cannot promise roadmap placement, implementation dates, or availability."
+  },
+  {
+    "id": "hr-inactivity-timeout",
+    "domain": "HackerRank",
+    "product_area": "interview",
+    "title": "Interviewer inactivity timeout",
+    "url": "https://support.example.local/hackerrank/interview-inactivity-timeout",
+    "keywords": ["inactivity timeout", "interviewer", "interview", "codepair"],
+    "content": "The corpus covers inactivity timeout as an informational interview setting. Support can answer what the corpus says, but should not change customer settings unless the corpus gives those steps.",
+    "response": "The corpus treats inactivity timeout as an informational interview setting. This starter corpus does not provide steps to change that setting."
+  },
+  {
+    "id": "hr-reschedule-assessment",
+    "domain": "HackerRank",
+    "product_area": "assessment_access",
+    "title": "Assessment rescheduling",
+    "url": "https://support.example.local/hackerrank/reschedule-assessment",
+    "keywords": ["reschedule assessment", "rescheduling assessment", "recruiter", "candidate"],
+    "content": "Assessment rescheduling requests require the candidate to contact the recruiter or hiring team. Automated support should not reschedule an assessment.",
+    "response": "Assessment rescheduling requests require the candidate to contact the recruiter or hiring team. Automated support should not reschedule an assessment."
+  },
+  {
+    "id": "hr-infosec-questionnaire",
+    "domain": "HackerRank",
+    "product_area": "account_management",
+    "title": "Infosec questionnaires",
+    "url": "https://support.example.local/hackerrank/infosec-questionnaire",
+    "keywords": ["infosec", "security questionnaire", "questionnaire", "account management"],
+    "content": "Infosec and security questionnaire requests require human review and approval. Automated support should not complete questionnaires on behalf of the company.",
+    "response": "Infosec and security questionnaire requests require human review and approval. Automated support should not complete questionnaires on behalf of the company."
+  },
+  {
+    "id": "hr-mock-interview-refund",
+    "domain": "HackerRank",
+    "product_area": "mock_interviews",
+    "title": "Mock interview refund requests",
+    "url": "https://support.example.local/hackerrank/mock-interview-refund",
+    "keywords": ["mock interview", "mock interviews", "refund", "payment"],
+    "content": "Mock interview refund requests are billing-sensitive and require support or billing team review. Automated support should not approve or deny refunds.",
+    "response": "Mock interview refund requests require support or billing team review. Automated support should not approve or deny refunds."
+  },
+  {
+    "id": "hr-payment-order",
+    "domain": "HackerRank",
+    "product_area": "billing_and_plans",
+    "title": "Payment issues with order IDs",
+    "url": "https://support.example.local/hackerrank/payment-order",
+    "keywords": ["payment", "order id", "cs_live_", "billing", "charge"],
+    "content": "Payment issues with real order IDs, including identifiers such as cs_live_, require billing team review. Automated support should not make payment adjustments.",
+    "response": "Payment issues with real order IDs require billing team review. Automated support should not make payment adjustments."
+  },
+  {
+    "id": "hr-subscription-management",
+    "domain": "HackerRank",
+    "product_area": "subscription_management",
+    "title": "Subscription pause or cancellation",
+    "url": "https://support.example.local/hackerrank/subscription-management",
+    "keywords": ["subscription", "pause subscription", "cancel subscription", "hiring plan"],
+    "content": "Subscription pause and cancellation requests require billing team action. Automated support should escalate these requests.",
+    "response": "Subscription pause and cancellation requests require billing team action."
+  },
+  {
+    "id": "claude-conversations",
+    "domain": "Claude",
+    "product_area": "conversation_management",
+    "title": "Conversation management",
+    "url": "https://support.example.local/claude/conversations",
+    "keywords": ["conversation", "delete chat", "delete conversations", "rename", "history"],
+    "content": "The corpus covers basic conversation management: users can manage conversation history from the conversation controls shown in the product. If the requested action is not available in those controls, support should not invent an alternative workflow.",
+    "response": "Use the conversation controls shown in the product to manage conversation history. If the action you need is not available there, this corpus does not provide another workflow."
+  },
+  {
+    "id": "claude-web-crawling",
+    "domain": "Claude",
+    "product_area": "web_crawling",
+    "title": "Web crawling opt-out",
+    "url": "https://support.example.local/claude/web-crawling",
+    "keywords": ["web crawling", "crawler", "robots.txt", "robots txt", "opt out", "crawl"],
+    "content": "For web crawling questions, the corpus says site owners should publish crawling preferences in robots.txt. The response should not claim any extra verification process unless that process appears in the corpus.",
+    "response": "To stop web crawling, add a robots.txt rule with User-agent: ClaudeBot and Disallow: /. This corpus does not provide an additional verification process."
+  },
+  {
+    "id": "claude-data-retention",
+    "domain": "Claude",
+    "product_area": "data_retention",
+    "title": "Data retention FAQ",
+    "url": "https://support.example.local/claude/data-retention",
+    "keywords": ["data retention", "retention", "privacy", "conversation history", "data training"],
+    "content": "The corpus answers general data-retention and model-training FAQs at a high level. If a user asks for legal rights handling, GDPR processing, or bulk deletion, the ticket must be escalated.",
+    "response": "This corpus covers data-retention and model-training questions at a general FAQ level. Legal rights handling, GDPR processing, or bulk deletion requests must be escalated."
+  },
+  {
+    "id": "claude-api-key",
+    "domain": "Claude",
+    "product_area": "api_access",
+    "title": "API key access",
+    "url": "https://support.example.local/claude/api-key",
+    "keywords": ["api key", "api", "key", "console", "token"],
+    "content": "For API key access questions, users should manage keys in the API console available to their account. Support should not ask users to share API keys in a ticket.",
+    "response": "Manage API keys in the API console available to your account. Do not share API keys in a support ticket."
+  },
+  {
+    "id": "claude-billing",
+    "domain": "Claude",
+    "product_area": "subscription_and_billing",
+    "title": "Subscription and billing changes",
+    "url": "https://support.example.local/claude/billing",
+    "keywords": ["subscription", "billing", "refund", "pause", "cancel", "invoice"],
+    "content": "Subscription pauses, cancellations, refunds, and billing changes require the billing team. Automated support may acknowledge the issue but should escalate the ticket.",
+    "response": "Subscription pauses, cancellations, refunds, and billing changes require the billing team."
+  },
+  {
+    "id": "claude-feature-feedback",
+    "domain": "Claude",
+    "product_area": "feature_request",
+    "title": "Claude feature feedback",
+    "url": "https://support.example.local/claude/feature-feedback",
+    "keywords": ["feature request", "suggestion", "please add", "dark mode", "feedback"],
+    "content": "Support can acknowledge Claude feature requests. The acknowledgement must not promise implementation, roadmap placement, or release dates.",
+    "response": "Thanks for sharing this feature request. We can record the feedback, but we cannot promise implementation, roadmap placement, or release dates."
+  },
+  {
+    "id": "claude-seat-access",
+    "domain": "Claude",
+    "product_area": "account_access",
+    "title": "Workspace seat or access removed",
+    "url": "https://support.example.local/claude/workspace-seat-access",
+    "keywords": ["seat removed", "workspace", "not the admin", "not the owner", "access removed"],
+    "content": "If a user's team workspace seat or access was removed by an admin, and the user is not the admin or owner, restoration requires authorized workspace review. Automated support should not bypass admin permissions.",
+    "response": "Workspace seat restoration requires authorized workspace review. Automated support should not bypass admin permissions."
+  },
+  {
+    "id": "claude-bug-bounty",
+    "domain": "Claude",
+    "product_area": "safety_and_policy",
+    "title": "Model safety bug bounty program",
+    "url": "https://support.example.local/claude/bug-bounty",
+    "keywords": ["security vulnerability", "bug bounty", "hackerone", "vulnerability"],
+    "content": "Security vulnerability reports are handled through the Bug Bounty Program. The corpus says the Bug Bounty Program runs through HackerOne and the application link is in the corpus.",
+    "response": "Security vulnerability reports are handled through the Bug Bounty Program. The corpus says the program runs through HackerOne and the application link is in the corpus."
+  },
+  {
+    "id": "claude-lti",
+    "domain": "Claude",
+    "product_area": "lti_integration",
+    "title": "LTI integration setup",
+    "url": "https://support.example.local/claude/lti",
+    "keywords": ["lti", "learning tool", "canvas", "moodle", "key setup"],
+    "content": "For LTI setup, the corpus says setup requires the organization admin and the LTI configuration values shown in the admin integration settings. If the requester lacks admin access or asks for missing keys, escalate.",
+    "response": "LTI setup requires the organization admin and the LTI configuration values shown in the admin integration settings. If you do not have admin access or the needed keys are missing, the ticket must be reviewed by support."
+  },
+  {
+    "id": "claude-bedrock",
+    "domain": "Claude",
+    "product_area": "third_party_integration",
+    "title": "AWS Bedrock and third-party integrations",
+    "url": "https://support.example.local/claude/bedrock",
+    "keywords": ["bedrock", "aws", "third party", "integration failure"],
+    "content": "AWS Bedrock and other third-party integration failures are outside direct product support scope in this corpus. For Bedrock inquiries, the corpus directs users to contact AWS Support at aws.amazon.com/contact-us.",
+    "response": "AWS Bedrock and other third-party integration failures are outside direct product support scope in this corpus. For Bedrock inquiries, contact AWS Support at aws.amazon.com/contact-us."
+  },
+  {
+    "id": "visa-fraud",
+    "domain": "Visa",
+    "product_area": "fraud_and_disputes",
+    "title": "Fraud or suspicious transaction",
+    "url": "https://support.example.local/visa/fraud",
+    "keywords": ["fraud", "suspicious transaction", "unauthorized", "dispute", "chargeback"],
+    "content": "Active fraud, unauthorized transactions, and suspicious transactions are high-risk Visa card issues. Automated support must escalate active fraud for fraud and disputes handling.",
+    "response": "Active fraud, unauthorized transactions, and suspicious transactions require fraud and disputes handling."
+  },
+  {
+    "id": "visa-dispute-charge",
+    "domain": "Visa",
+    "product_area": "fraud_and_disputes",
+    "title": "How to dispute a charge",
+    "url": "https://support.example.local/visa/dispute-charge",
+    "keywords": ["how to dispute", "dispute a charge", "charge dispute", "issuer", "bank", "number on card"],
+    "content": "For charge disputes, the corpus says cardholders should contact their card issuer or bank, using the number on the card. Visa does not issue cards or process cardholder disputes directly.",
+    "response": "To dispute a charge, contact your card issuer or bank using the number on your card. Visa does not issue cards or process cardholder disputes directly."
+  },
+  {
+    "id": "visa-stolen-card",
+    "domain": "Visa",
+    "product_area": "card_replacement",
+    "title": "Lost or stolen card",
+    "url": "https://support.example.local/visa/stolen-card",
+    "keywords": ["lost card", "stolen card", "card replacement", "blocked card", "card blocked"],
+    "content": "Lost cards, stolen cards, and card replacement requests are sensitive account-security cases. Automated support should escalate and should not collect full card numbers in the ticket.",
+    "response": "Lost cards, stolen cards, and card replacement requests are sensitive account-security cases. Do not include a full card number in the ticket."
+  },
+  {
+    "id": "visa-atm-pin",
+    "domain": "Visa",
+    "product_area": "atm_and_cash",
+    "title": "ATM cash and PIN issues",
+    "url": "https://support.example.local/visa/atm-pin",
+    "keywords": ["atm", "cash", "pin", "cash advance"],
+    "content": "For urgent cash, ATM, cash advance, and PIN issues, the corpus says Visa cards can be used at ATMs with the Visa or Plus logo worldwide and references the ATM locator at visa.com/atmlocator. Support should not ask for PINs or full card numbers.",
+    "response": "For urgent cash or ATM access, use an ATM with the Visa or Plus logo. The corpus references the ATM locator at visa.com/atmlocator. Do not share your PIN or full card number in a support ticket."
+  },
+  {
+    "id": "visa-minimum-spend",
+    "domain": "Visa",
+    "product_area": "minimum_spend_policy",
+    "title": "Merchant minimum spend",
+    "url": "https://support.example.local/visa/minimum-spend",
+    "keywords": ["minimum spend", "minimum transaction", "merchant"],
+    "content": "For merchant minimum-spend questions, the corpus states that US law allows merchants in the US and US territories to set a minimum purchase of up to $10 for credit card transactions.",
+    "response": "For credit card transactions in the US and US territories, the corpus states that merchants may set a minimum purchase of up to $10."
+  },
+  {
+    "id": "visa-travel-block",
+    "domain": "Visa",
+    "product_area": "travel_support",
+    "title": "Card blocked during travel",
+    "url": "https://support.example.local/visa/travel-block",
+    "keywords": ["travel", "voyage", "abroad", "overseas", "blocked during travel", "card blocked"],
+    "content": "A card blocked during active travel is high urgency and should be escalated. Automated support should not request sensitive card details.",
+    "response": "A card blocked during active travel is high urgency and should be escalated. Do not include sensitive card details in the ticket."
+  },
+  {
+    "id": "visa-general-feature-feedback",
+    "domain": "Visa",
+    "product_area": "general_support",
+    "title": "Visa feedback acknowledgement",
+    "url": "https://support.example.local/visa/feedback",
+    "keywords": ["feature request", "suggestion", "feedback"],
+    "content": "Support can acknowledge harmless Visa feedback, but it should not promise product, issuer, or merchant changes.",
+    "response": "Thanks for sharing this feedback. We can record it, but we cannot promise product, issuer, or merchant changes."
+  }
+]

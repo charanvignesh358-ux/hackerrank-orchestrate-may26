@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Support Triage Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Triage navigation">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" role="img">
+              <path d="M5 9.5 16 4l11 5.5v13L16 28 5 22.5v-13Z"></path>
+              <path d="M10 12h12M10 16h12M10 20h7"></path>
+            </svg>
+          </div>
+          <div>
+            <strong>Support Triage</strong>
+            <span>HackerRank, Claude, Visa</span>
+          </div>
+        </div>
+
+        <nav class="nav-stack" aria-label="Dashboard sections">
+          <button class="nav-item active" type="button" data-view="overview" title="Overview">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm10 7h6V4h-6v16ZM4 20h6v-5H4v5Z"></path></svg>
+            <span>Overview</span>
+          </button>
+          <button class="nav-item" type="button" data-view="tickets" title="Tickets">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5V4Zm3 4h8M8 12h8M8 16h5"></path></svg>
+            <span>Tickets</span>
+          </button>
+          <button class="nav-item" type="button" data-view="json" title="JSON">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg>
+            <span>JSON</span>
+          </button>
+        </nav>
+
+        <div class="side-note">
+            <span class="dot live"></span>
+          <span>Static preview works offline. Uploads need the local API.</span>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Terminal agent preview</p>
+            <h1>Multi-domain support triage</h1>
+          </div>
+          <div class="top-actions">
+            <input id="csvInput" class="visually-hidden" type="file" accept=".csv,text/csv">
+            <button class="action-button" type="button" id="uploadButton" title="Upload CSV tickets">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 8l5-5 5 5M5 21h14"></path></svg>
+              <span>Upload CSV</span>
+            </button>
+            <button class="action-button" type="button" id="loadApiButton" title="Load server preview">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v6H4V4Zm0 10h16v6H4v-6ZM8 7h.01M8 17h.01"></path></svg>
+              <span>API Preview</span>
+            </button>
+            <button class="action-button" type="button" id="exportCsvButton" title="Export CSV">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v4a2 2 0 0 0 2 2h4M14 3H6v18h12a2 2 0 0 0 2-2V9l-6-6ZM8 13h8M8 17h5"></path></svg>
+              <span>CSV</span>
+            </button>
+            <button class="action-button" type="button" id="exportJsonButton" title="Export JSONL">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14"></path></svg>
+              <span>JSONL</span>
+            </button>
+            <button class="icon-button" type="button" id="refreshButton" title="Refresh preview data">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 5v6h-6"></path></svg>
+            </button>
+            <a class="icon-button" href="../out/master_prompt_preview.jsonl" title="Open JSONL preview">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"></path></svg>
+            </a>
+          </div>
+        </header>
+
+        <section class="status-strip" aria-label="Summary metrics">
+          <article class="metric-panel">
+            <span>Total tickets</span>
+            <strong id="metricTotal">0</strong>
+          </article>
+          <article class="metric-panel">
+            <span>Replied</span>
+            <strong id="metricReplied">0</strong>
+          </article>
+          <article class="metric-panel">
+            <span>Escalated</span>
+            <strong id="metricEscalated">0</strong>
+          </article>
+          <article class="metric-panel">
+            <span>Invalid</span>
+            <strong id="metricInvalid">0</strong>
+          </article>
+          <article class="metric-panel">
+            <span>Avg confidence</span>
+            <strong id="metricConfidence">0%</strong>
+          </article>
+          <article class="metric-panel">
+            <span>Readiness</span>
+            <strong id="metricReadiness">0/5</strong>
+          </article>
+        </section>
+
+        <section class="ops-grid">
+          <section class="stage-panel" aria-label="Triage flow">
+            <div class="stage-header">
+              <div>
+                <h2>Safety pipeline</h2>
+                <p>Every ticket moves through the same guarded path before a reply or escalation.</p>
+              </div>
+              <span class="pipeline-badge" id="coverageBadge">Loading</span>
+            </div>
+            <div class="health-row">
+              <span class="health-pill" id="apiHealth">Checking API</span>
+              <span id="dataMode">Embedded preview mode</span>
+            </div>
+            <div class="pipeline" aria-hidden="true">
+              <div class="stage-node">
+                <span>1</span>
+                <strong>Threat filter</strong>
+              </div>
+              <div class="stage-line"></div>
+              <div class="stage-node">
+                <span>2</span>
+                <strong>Domain</strong>
+              </div>
+              <div class="stage-line"></div>
+              <div class="stage-node">
+                <span>3</span>
+                <strong>Risk</strong>
+              </div>
+              <div class="stage-line"></div>
+              <div class="stage-node">
+                <span>4</span>
+                <strong>Corpus</strong>
+              </div>
+              <div class="stage-line"></div>
+              <div class="stage-node">
+                <span>5</span>
+                <strong>JSON</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="readiness-panel" aria-label="Submission readiness">
+            <div class="panel-heading flush">
+              <h2>Submission readiness</h2>
+              <span id="readinessScore">0/5</span>
+            </div>
+            <div class="readiness-list" id="readinessList"></div>
+          </section>
+        </section>
+
+        <section class="controls-panel" aria-label="Ticket filters">
+          <div class="segmented" role="group" aria-label="Status filter">
+            <button type="button" class="segment active" data-status="all">All</button>
+            <button type="button" class="segment" data-status="replied">Replied</button>
+            <button type="button" class="segment" data-status="escalated">Escalated</button>
+          </div>
+          <label class="select-box">
+            <span>Domain</span>
+            <select id="domainFilter">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label class="select-box">
+            <span>Priority</span>
+            <select id="priorityFilter">
+              <option value="all">All</option>
+              <option value="High">High</option>
+              <option value="Medium">Medium</option>
+              <option value="Normal">Normal</option>
+              <option value="Security review">Security review</option>
+              <option value="No review needed">No review</option>
+            </select>
+          </label>
+          <label class="search-box">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.4-4.4M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"></path></svg>
+            <input id="searchInput" type="search" placeholder="Search response, product area, request type">
+          </label>
+          <label class="select-box sort-box">
+            <span>Sort</span>
+            <select id="sortSelect">
+              <option value="queue">Queue</option>
+              <option value="confidence">Confidence</option>
+              <option value="risk">Risk</option>
+              <option value="domain">Domain</option>
+            </select>
+          </label>
+          <button class="action-button compact" type="button" id="escalatedOnlyButton" title="Show escalated queue">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 3.9 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0ZM12 9v4M12 17h.01"></path></svg>
+            <span>Review queue</span>
+          </button>
+        </section>
+
+        <section class="lab-panel" aria-label="Live ticket triage">
+          <div class="panel-heading flush">
+            <h2>Live ticket lab</h2>
+            <span id="labStatus">Ready</span>
+          </div>
+          <div class="lab-grid">
+            <label>
+              <span>Company</span>
+              <select id="labCompany">
+                <option value="HackerRank">HackerRank</option>
+                <option value="Claude">Claude</option>
+                <option value="Visa">Visa</option>
+                <option value="">Unknown</option>
+              </select>
+            </label>
+            <label>
+              <span>Subject</span>
+              <input id="labSubject" type="text" value="Refund how-to">
+            </label>
+            <label class="lab-issue">
+              <span>Issue</span>
+              <textarea id="labIssue" rows="3">How do I request a refund for my mock interview payment?</textarea>
+            </label>
+            <button class="action-button compact lab-run" type="button" id="runLabButton">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 9-14 9V3Z"></path></svg>
+              <span>Run triage</span>
+            </button>
+          </div>
+          <div class="lab-result" id="labResult"></div>
+        </section>
+
+        <section class="content-grid">
+          <section class="ticket-panel" aria-label="Tickets">
+            <div class="panel-heading">
+              <h2>Tickets</h2>
+              <span id="visibleCount">0 shown</span>
+            </div>
+            <div class="ticket-list" id="ticketList" aria-live="polite"></div>
+          </section>
+
+          <section class="detail-panel" aria-label="Selected ticket details">
+            <div class="panel-heading">
+              <h2>Decision detail</h2>
+              <span id="selectedIndex">No ticket</span>
+            </div>
+            <div id="emptyState" class="empty-state">
+              <svg viewBox="0 0 120 80" aria-hidden="true">
+                <path d="M10 58h100M26 58V25h68v33M34 35h30M34 45h52M34 55h37"></path>
+                <circle cx="86" cy="25" r="10"></circle>
+              </svg>
+              <p>Load the preview output to inspect ticket decisions.</p>
+            </div>
+            <div id="detailContent" class="detail-content hidden">
+              <div class="decision-row">
+                <div>
+                  <span>Status</span>
+                  <strong id="detailStatus"></strong>
+                </div>
+                <div>
+                  <span>Product area</span>
+                  <strong id="detailArea"></strong>
+                </div>
+                <div>
+                  <span>Request type</span>
+                  <strong id="detailType"></strong>
+                </div>
+                <div>
+                  <span>Confidence</span>
+                  <strong id="detailConfidence"></strong>
+                </div>
+                <div>
+                  <span>Review priority</span>
+                  <strong id="detailPriority"></strong>
+                </div>
+                <div>
+                  <span>Corpus coverage</span>
+                  <strong id="detailCoverage"></strong>
+                </div>
+              </div>
+              <article class="response-box">
+                <h3>Response</h3>
+                <p id="detailResponse"></p>
+              </article>
+              <article class="response-box">
+                <h3>Decision path</h3>
+                <div id="decisionTimeline" class="decision-timeline"></div>
+              </article>
+              <article class="response-box">
+                <h3>Editable draft</h3>
+                <textarea id="draftEditor" rows="5" spellcheck="true"></textarea>
+                <div class="editor-actions">
+                  <button class="action-button compact" type="button" id="saveDraftButton">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21H5V3h11l3 3v15ZM8 21v-7h8v7M8 3v5h7"></path></svg>
+                    <span>Save draft</span>
+                  </button>
+                  <button class="action-button compact ghost" type="button" id="resetDraftButton">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v6h6"></path></svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+              </article>
+              <article class="response-box">
+                <h3>Sources</h3>
+                <div id="sourceList" class="source-list"></div>
+              </article>
+              <article class="response-box">
+                <h3>Justification</h3>
+                <p id="detailJustification"></p>
+              </article>
+              <article class="json-box">
+                <h3>Strict JSON</h3>
+                <pre id="detailJson"></pre>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <section class="charts-grid" aria-label="Breakdowns">
+          <article class="chart-panel">
+            <h2>Domain mix</h2>
+            <div id="domainBars" class="bar-stack"></div>
+          </article>
+          <article class="chart-panel">
+            <h2>Product areas</h2>
+            <div id="areaCloud" class="area-cloud"></div>
+          </article>
+          <article class="chart-panel">
+            <h2>Human review queue</h2>
+            <div id="reviewQueue" class="review-queue"></div>
+          </article>
+          <article class="chart-panel">
+            <h2>Escalation reasons</h2>
+            <div id="reasonList" class="reason-list"></div>
+          </article>
+          <article class="chart-panel">
+            <h2>Confidence bands</h2>
+            <div id="confidenceBands" class="band-stack"></div>
+          </article>
+          <article class="chart-panel">
+            <h2>Corpus coverage</h2>
+            <div id="coverageBars" class="bar-stack"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <template id="ticketTemplate">
+      <button class="ticket-item" type="button">
+        <span class="ticket-topline">
+          <strong class="ticket-title"></strong>
+          <span class="status-pill"></span>
+        </span>
+        <span class="ticket-meta"></span>
+        <span class="ticket-response"></span>
+      </button>
+    </template>
+
+    <script src="preview-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
