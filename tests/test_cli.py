@@ -1,4 +1,6 @@
 import csv
+import subprocess
+import sys
 from io import StringIO
 import unittest
 from pathlib import Path
@@ -8,6 +10,26 @@ from support_triage.cli import main, results_to_csv_text
 
 
 class CliOutputTests(unittest.TestCase):
+    def test_evaluator_entrypoint_finds_default_corpus(self) -> None:
+        root = Path(__file__).resolve().parent.parent
+        result = subprocess.run(
+            [
+                sys.executable,
+                str(root / "code" / "main.py"),
+                "--issue",
+                "How do I opt out of web crawling?",
+                "--company",
+                "Claude",
+            ],
+            cwd=root,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, msg=result.stderr)
+        self.assertIn('"status": "replied"', result.stdout)
+
     def test_csv_text_contains_required_result_columns(self) -> None:
         csv_text = results_to_csv_text(
             [

@@ -9,7 +9,16 @@ from .models import Ticket
 from .triage import SupportTriageAgent, triage_to_json
 
 
-DEFAULT_CORPUS = Path(__file__).resolve().parent.parent / "data" / "support_corpus.json"
+def _default_corpus_path() -> Path:
+    package_file = Path(__file__).resolve()
+    for parent in package_file.parents:
+        candidate = parent / "data" / "support_corpus.json"
+        if candidate.exists():
+            return candidate
+    return package_file.parent.parent / "data" / "support_corpus.json"
+
+
+DEFAULT_CORPUS = _default_corpus_path()
 
 
 def build_parser() -> argparse.ArgumentParser:
